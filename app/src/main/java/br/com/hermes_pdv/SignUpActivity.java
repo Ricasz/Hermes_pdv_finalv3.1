@@ -3,6 +3,8 @@ package br.com.hermes_pdv;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,11 +29,27 @@ public class SignUpActivity extends AppCompatActivity {
 
     private String mStringName, mStringEmail, mStringPassword, mStringPassword2 , mStringNivelAcesso;
 
+    InputFilter filterLettersOnly = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            for (int i = start; i < end; i++) {
+                if (!Character.isLetter(source.charAt(i)) && !Character.isSpaceChar(source.charAt(i))) {
+                    return "";
+                }
+            }
+            return null;
+        }
+    };
+
     private boolean isRequired(){
         if(TextUtils.isEmpty(mEditTextName.getText())          ||
                 TextUtils.isEmpty(mEditTextEmail.getText())    ||
                 TextUtils.isEmpty(mEditTextPassword.getText()) ||
                 TextUtils.isEmpty(mEditTextPassword2.getText()) ){
+            return true;
+        }
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextEmail.getText()).matches()) {
+            mEditTextEmail.setError("Insira um e-mail válido");
             return true;
         } else {
             return false;
@@ -112,7 +130,10 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         mEditTextEmail = findViewById(R.id.editText_email);
+
         mEditTextName = findViewById(R.id.editText_name);
+        mEditTextName.setFilters(new InputFilter[]{filterLettersOnly});
+
         mEditTextPassword = findViewById(R.id.editText_password_sign_up);
         mEditTextPassword2 = findViewById(R.id.editText_password_sign_up_2);
 

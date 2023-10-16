@@ -3,6 +3,8 @@ package br.com.hermes_pdv;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.KeyEvent;
