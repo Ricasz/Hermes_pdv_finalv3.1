@@ -19,6 +19,9 @@
     <string name="text_email_or_username">Email or username</string>
     <string name="text_email_or_password_incorrect">Email or password incorrect</string>
 
+    <string name="text_error_password_length" translatable="false">A senha deve ter no mínimo 8 caracteres.</string>
+
+
     <string name="text_full_name">Name</string>
     <string name="text_email">Email</string>
 

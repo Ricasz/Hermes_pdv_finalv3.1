@@ -62,6 +62,11 @@ public class SignUpActivity extends AppCompatActivity {
         return mPass1.equals(mPass2);
     }
 
+    private boolean isValidPasswordLength() {
+        return mEditTextPassword.getText().toString().trim().length() >= 8;
+    }
+
+
     private void performActivityLogin(){
         Intent mIntent = new Intent(getApplicationContext() , LoginActivity.class);
         startActivity(mIntent);
@@ -78,6 +83,12 @@ public class SignUpActivity extends AppCompatActivity {
         if (!isSamePassword()){
             String mTextMessage = getString(R.string.text_password_are_not_same);
             Toast.makeText(getApplicationContext(), mTextMessage , Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!isValidPasswordLength()) {
+            String mTextMessage = getString(R.string.text_error_password_length);
+            Toast.makeText(getApplicationContext(), mTextMessage, Toast.LENGTH_SHORT).show();
             return;
         }
 
