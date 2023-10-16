@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_person"
+        android:enabled="true"
+        android:icon="@drawable/ic_person"
+        android:title="@string/menu_person"/>
+
+    <item
+        android:id="@+id/menu_sales"
+        android:enabled="true"
+        android:icon="@drawable/ic_sales"
+        android:title="@string/menu_sales"/>
+
+    <item
+        android:id="@+id/menu_account"
+        android:enabled="true"
+        android:icon="@drawable/ic_account"
+        android:title="@string/menu_account"/>
+
+</menu>
